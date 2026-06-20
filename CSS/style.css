@@ -1,0 +1,56 @@
+/* h1{
+    font-family: Cambria, Georgia, 'Times New Roman', serif;
+    color:aquamarine;
+    text-align: center;
+    font-size:55px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    line-height: 1.5px;
+    text-decoration: double teal underline;
+    text-transform: uppercase;
+ } */    /* PRACTICE Q 1*/
+
+
+
+
+ *{
+    font-family: Arial, Helvetica, sans-serif;
+ }
+
+ h1,h3{
+    color: blueviolet;
+ }
+
+ #login{
+    background-color: aquamarine;
+ }
+
+.myclass{
+    background-color: plum ;
+    color:red;
+}
+
+.myclass + button{
+    background-color: chocolate;
+    color: bisque;
+}
+
+div>input{
+    background-color: brown;
+}
+
+input[type="text"]{
+    color: red;
+}
+input[type]{
+    background-color: ghostwhite;
+}
+
+button:hover {
+    background-color: antiquewhite;
+    color: black;
+}
+
+div:nth-of-type(2n){
+    background-color: plum;
+}

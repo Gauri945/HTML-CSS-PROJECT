@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CollabHub | Influencer Collaboration Platform</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --accent: #f59e0b;
+    }
+
+    /* Custom Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .delay-100 {
+      animation-delay: 100ms;
+    }
+
+    .delay-200 {
+      animation-delay: 200ms;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.03);
+    }
+
+    .card-hover:hover {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+
+    /* Modal styles */
+    .modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+  </style>
+</head>
+<body class="font-sans bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="text-2xl font-bold text-indigo-600">
+          <a href="#" class="flex items-center">
+            <span>Collab</span><span class="text-orange-400">Hub</span>
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#home" class="text-gray-700 hover:text-indigo-600 transition">Home</a>
+          <a href="#portfolio" class="text-gray-700 hover:text-indigo-600 transition">Portfolio</a>
+          <a href="#features" class="text-gray-700 hover:text-indigo-600 transition">Features</a>
+          <a href="#testimonials" class="text-gray-700 hover:text-indigo-600 transition">Testimonials</a>
+          <a href="#contact" class="text-gray-700 hover:text-indigo-600 transition">Contact</a>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation (hidden by default) -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white px-4 py-2 shadow-lg">
+      <a href="#home" class="block py-2 text-gray-700 hover:text-indigo-600 transition">Home</a>
+      <a href="#portfolio" class="block py-2 text-gray-700 hover:text-indigo-600 transition">Portfolio</a>
+      <a href="#features" class="block py-2 text-gray-700 hover:text-indigo-600 transition">Features</a>
+      <a href="#testimonials" class="block py-2 text-gray-700 hover:text-indigo-600 transition">Testimonials</a>
+      <a href="#contact" class="block py-2 text-gray-700 hover:text-indigo-600 transition">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="relative bg-gradient-to-br from-indigo-50 to-indigo-100 py-20">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+      <div class="md:w-1/2 text-center md:text-left fade-in">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          Connect. Create. <span class="text-indigo-600">Collaborate.</span>
+        </h1>
+        <p class="text-lg text-gray-600 mb-8 max-w-lg">
+          The premier platform connecting brands with top-tier influencers to create groundbreaking campaigns that drive results.
+        </p>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+          <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white py-3 px-8 rounded-lg font-medium transition transform hover:scale-105">
+            Get Started
+          </a>
+          <a href="#portfolio" class="bg-white hover:bg-gray-100 text-indigo-600 py-3 px-8 rounded-lg font-medium border border-indigo-600 transition transform hover:scale-105">
+            View Portfolio
+          </a>
+        </div>
+      </div>
+      <div class="md:w-1/2 mt-10 md:mt-0 fade-in delay-100">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/edf6f34d-dba3-4c7c-a40b-bc4e2556ce54.png" alt="Diverse group of content creators collaborating in a modern creative studio space with laptops and filming equipment" class="rounded-lg shadow-xl w-full">
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div class="p-6 fade-in">
+          <div class="text-4xl font-bold text-indigo-600 mb-2">500+</div>
+          <div class="text-gray-600">Influencers</div>
+        </div>
+        <div class="p-6 fade-in delay-100">
+          <div class="text-4xl font-bold text-indigo-600 mb-2">2M+</div>
+          <div class="text-gray-600">Followers</div>
+        </div>
+        <div class="p-6 fade-in delay-200">
+          <div class="text-4xl font-bold text-indigo-600 mb-2">100+</div>
+          <div class="text-gray-600">Brands</div>
+        </div>
+        <div class="p-6 fade-in delay-300">
+          <div class="text-4xl font-bold text-indigo-600 mb-2">95%</div>
+          <div class="text-gray-600">Success Rate</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio Section -->
+  <section id="portfolio" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Featured <span class="text-indigo-600">Influencers</span></h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Our top performers with proven track records of successful brand collaborations.
+        </p>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Portfolio Item 1 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover-scale card-hover fade-in">
+          <div class="relative overflow-hidden h-64">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/af5432b0-b289-4a05-aedf-c1ad4e797227.png" alt="Fashion influencer posing in urban streetwear against a city backdrop" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+              <div>
+                <h3 class="text-white text-xl font-bold">Alex Martinez</h3>
+                <p class="text-gray-300">Fashion & Lifestyle</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Engagement Rate: 8.7% | Niche: Luxury Fashion</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">TikTok</span>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Instagram</span>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">YouTube</span>
+            </div>
+            <button onclick="openModal('Alex Martinez', 'Fashion & Lifestyle', 'https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/fafc447b-4a15-497e-8599-54eee9dfd013.png', '850K+ followers across platforms with an average engagement rate of 8.7%. Specializes in luxury fashion, streetwear, and lifestyle content. Notable collaborations with Gucci, Nike, and Ralph Lauren.')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded transition">
+              View Profile
+            </button>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 2 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover-scale card-hover fade-in delay-100">
+          <div class="relative overflow-hidden h-64">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c04f41d3-f818-4e7b-ac67-35dd9779b742.png" alt="Beauty influencer demonstrating makeup techniques in a well-lit vanity setup" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+              <div>
+                <h3 class="text-white text-xl font-bold">Jamie Chen</h3>
+                <p class="text-gray-300">Beauty & Cosmetics</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Engagement Rate: 12.3% | Niche: Skincare</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Instagram</span>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">YouTube</span>
+            </div>
+            <button onclick="openModal('Jamie Chen', 'Beauty & Cosmetics', 'https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/16d0eef5-8ba0-4dc0-9404-f3827adc0cef.png', '560K followers with one of the highest engagement rates in the beauty niche at 12.3%. Skincare specialist with a focus on clean beauty. Partnered with Fenty Beauty, The Ordinary, and Glossier.')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded transition">
+              View Profile
+            </button>
+          </div>
+        </div>
+
+        <!-- Portfolio Item 3 -->
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover-scale card-hover fade-in delay-200">
+          <div class="relative overflow-hidden h-64">
+            <img src="https://placehold.co/600x400" alt="Fitness coach demonstrating workout routine in a modern gym environment" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-6">
+              <div>
+                <h3 class="text-white text-xl font-bold">Marcus Johnson</h3>
+                <p class="text-gray-300">Fitness & Wellness</p>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <p class="text-gray-600 mb-4">Engagement Rate: 9.5% | Niche: Functional Training</p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">Instagram</span>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">YouTube</span>
+              <span class="bg-indigo-100 text-indigo-800 text-xs px-2 py-1 rounded">TikTok</span>
+            </div>
+            <button onclick="openModal('Marcus Johnson', 'Fitness & Wellness', 'https://placehold.co/600x400', '1.2M followers specializing in functional training and athlete conditioning. Collaborated with Nike Training Club, Gymshark, and RXBAR. Hosts live workout sessions 3x weekly.')" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded transition">
+              View Profile
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- View More Button -->
+      <div class="text-center mt-12 fade-in delay-300">
+        <button class="bg-white hover:bg-gray-100 text-indigo-600 font-medium py-3 px-8 rounded-lg border border-indigo-600 transition transform hover:scale-105">
+          View All Influencers
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Collaboration <span class="text-indigo-600">Features</span></h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Our platform provides everything you need for successful influencer collaborations.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gray-50 p-8 rounded-lg fade-in">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Smart Matching</h3>
+          <p class="text-gray-600">
+            Our AI-driven algorithm matches you with influencers perfectly aligned with your brand values and target audience.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-gray-50 p-8 rounded-lg fade-in delay-100">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Performance Guarantee</h3>
+          <p class="text-gray-600">
+            We implement strict quality controls and provide guaranteed minimum engagement rates for all collaborations.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-gray-50 p-8 rounded-lg fade-in delay-200">
+          <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">Campaign Management</h3>
+          <p class="text-gray-600">
+            Our dashboard provides real-time campaign tracking and analytics to monitor performance and ROI.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 bg-indigo-50">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl font-bold text-gray-800 mb-4">Success <span class="text-indigo-600">Stories</span></h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+          Don't just take our word for it - hear from brands and influencers who've found success through our platform.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonial 1 -->
+        <div class="bg-white p-8 rounded-lg shadow-sm hover-scale fade-in">
+          <div class="flex items-center mb-6">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/27d1e9f5-ae24-4527-a3ee-c79cd5ec0577.png" alt="Professional headshot of Sarah Thompson with short brown hair wearing business attire" class="w-16 h-16 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-semibold">Sarah Thompson</h4>
+              <p class="text-gray-500 text-sm">CBO, Luxe Cosmetics</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            "Working with CollabHub has transformed our influencer strategy. The quality of creators we've connected with is exceptional, and the entire process is seamless."
+          </p>
+          <div class="mt-4">
+            <span class="text-yellow-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-white p-8 rounded-lg shadow-sm hover-scale fade-in delay-100">
+          <div class="flex items-center mb-6">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/986fb018-4a47-40b0-b5ff-8ae8ac579276.png" alt="Professional headshot of Carlos Mendez smiling and wearing casual smart clothing" class="w-16 h-16 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-semibold">Carlos Mendez</h4>
+              <p class="text-gray-500 text-sm">Founder, Elan Activewear</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            "As a direct-to-consumer brand, we saw a 300% ROI on our first campaign through CollabHub. Their analytics dashboard makes optimization incredibly easy."
+          </p>
+          <div class="mt-4">
+            <span class="text-yellow-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </span>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-white p-8 rounded-lg shadow-sm hover-scale fade-in delay-200">
+          <div class="flex items-center mb-6">
+            <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f7c9bbd8-fac1-440d-b7dc-fe374f1d06a4.png" alt="Professional headshot of Aisha Johnson with natural hair smiling and looking confident" class="w-16 h-16 rounded-full">
+            <div class="ml-4">
+              <h4 class="font-semibold">Aisha Johnson</h4>
+              <p class="text-gray-500 text-sm">Content Creator</p>
+            </div>
+          </div>
+          <p class="text-gray-600 italic">
+            "CollabHub has connected me with brands that truly align with my values. The payment and contract process is transparent and fair for creators."
+          </p>
+          <div class="mt-4">
+            <span class="text-yellow-500">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-16 bg-gradient-to-r from-indigo-600 to-indigo-800">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold text-white mb-6 fade-in">Ready to Elevate Your Brand?</h2>
+      <p class="text-lg text-indigo-100 max-w-2xl mx-auto mb-8 fade-in delay-100">
+        Whether you're a brand looking for creators or an influencer seeking collaboration opportunities, we've got you covered.
+      </p>
+      <div class="fade-in delay-200">
+        <a href="#contact" class="bg-white hover:bg-gray-100 text-indigo-600 font-medium py-3 px-8 rounded-lg transition transform hover:scale-105 inline-block">
+          Get Started Today
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In <span class="text-indigo-600">Touch</span></h2>
+          <p class="text-lg text-gray-600">
+            Have questions or ready to start collaborating? Reach out to our team.
+          </p>
+        </div>
+        
+        <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-8 bg-gray-50 p-8 rounded-lg shadow-sm">
+          <div class="fade-in">
+            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+            <input type="text" id="name" name="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" required>
+          </div>
+          <div class="fade-in delay-100">
+            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" required>
+          </div>
+          <div class="fade-in delay-150">
+            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+            <select id="subject" name="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" required>
+              <option value="">Select an option</option>
+              <option value="brand">I'm a brand looking for influencers</option>
+              <option value="influencer">I'm an influencer looking for collaborations</option>
+              <option value="general">General inquiry</option>
+            </select>
+          </div>
+          <div class="fade-in delay-200">
+            <label for="social" class="block text-gray-700 font-medium mb-2">Social Media Handle</label>
+            <input type="text" id="social" name="social" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition">
+          </div>
+          <div class="md:col-span-2 fade-in delay-250">
+            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+            <textarea id="message" name="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition" required></textarea>
+          </div>
+          <div class="md:col-span-2 fade-in delay-300">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-lg transition transform hover:scale-105">
+              Send Message
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="fade-in">
+          <h3 class="text-xl font-bold mb-4">Collab<span class="text-orange-400">Hub</span></h3>
+          <p class="text-gray-400">
+            The premier platform connecting brands with top-tier influencers to create groundbreaking campaigns.
+          </p>
+          <div class="flex space-x-4 mt-6">
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-gray-400 hover:text-white transition">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </div>
+        </div>
+        <div class="fade-in delay-100">
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
+            <li><a href="#portfolio" class="text-gray-400 hover:text-white transition">Portfolio</a></li>
+            <li><a href="#features" class="text-gray-400 hover:text-white transition">Features</a></li>
+            <li><a href="#testimonials" class="text-gray-400 hover:text-white transition">Testimonials</a></li>
+            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          </ul>
+        </div>
+        <div class="fade-in delay-150">
+          <h4 class="text-lg font-semibold mb-4">Resources</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Case Studies</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="fade-in delay-200">
+          <h4 class="text-lg font-semibold mb-4">Legal</h4>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 fade-in delay-300">
+        <p>© 2023 CollabHub. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Influencer Modal -->
+  <div id="influencerModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 invisible opacity-0 z-50">
+    <div class="bg-white rounded-lg max-w-3xl w-full max-h-[90vh] overflow-y-auto">
+      <div class="relative">
+        <button onclick="closeModal()" class="absolute top-4 right-4 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full w-8 h-8 flex items-center justify-center transition">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="h-64 md:h-full">
+            <img id="modalImage" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a5f51fdc-3e99-41c8-8bd8-02a7f5677639.png" alt="Featured influencer profile with detailed information" class="w-full h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-tr-none">
+          </div>
+          <div class="p-6">
+            <h2 id="modalName" class="text-2xl font-bold text-gray-800 mb-2"></h2>
+            <p id="modalCategory" class="text-gray-600 mb-4"></p>
+            <p id="modalDescription" class="text-gray-700 mb-6"></p>
+            <div class="bg-gray-50 p-4 rounded-lg mb-6">
+              <h4 class="font-semibold text-gray-800 mb-2">Collaboration Details</h4>
+              <ul class="text-gray-600 space-y-2">
+                <li><strong>Average Engagement:</strong> <span id="modalEngagement">6-12%</span></li>
+                <li><strong>Platforms:</strong> <span id="modalPlatforms">Instagram, YouTube, TikTok</span></li>
+                <li><strong>Brand Categories:</strong> <span id="modalBrands">Fashion, Beauty, Lifestyle</span></li>
+                <li><strong>Content Type:</strong> <span id="modalContent">Photography, Video, Live Streams</span></li>
+              </ul>
+            </div>
+            <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg transition">
+              Request Collaboration
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+
+    // Smooth Scrolling for all links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          // Close mobile menu if open
+          document.getElementById('mobile-menu').classList.add('hidden');
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Form Validation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simple validation
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+      
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      
+      // Here you would normally send the form data to a server
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+
+    // Modal Functions
+    function openModal(name, category, imageUrl, description) {
+      const modal = document.getElementById('influencerModal');
+      const modalImage = document.getElementById('modalImage');
+      const modalName = document.getElementById('modalName');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalDescription = document.getElementById('modalDescription');
+      
+      modalImage.src = imageUrl;
+      modalImage.alt = `${name} portfolio showcase with detailed information`;
+      modalName.textContent = name;
+      modalCategory.textContent = category;
+      modalDescription.textContent = description;
+      
+      modal.classList.remove('invisible', 'opacity-0');
+      modal.classList.add('opacity-100');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('influencerModal');
+      modal.classList.add('invisible', 'opacity-0');
+      modal.classList.remove('opacity-100');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside content
+    document.getElementById('influencerModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal();
+      }
+    });
+
+    // Animation on scroll
+    function animateOnScroll() {
+      const elements = document.querySelectorAll('.fade-in');
+      
+      elements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        if (elementTop < windowHeight - 100) {
+          el.style.opacity = 1;
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    }
+
+    window.addEventListener('load', animateOnScroll);
+    window.addEventListener('scroll', animateOnScroll);
+  </script>
+</body>
+</html>
+
+```
